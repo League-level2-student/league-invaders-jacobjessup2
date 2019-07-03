@@ -27,6 +27,7 @@ public class LeagueInvaders {
 		frame.setVisible(true);
 		frame.setSize(WIDTH, HEIGHT);
 		frame.add(gpanel);
+		frame.addKeyListener(gpanel);
 	}
 	
 	 
