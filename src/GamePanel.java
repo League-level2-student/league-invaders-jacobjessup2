@@ -18,7 +18,7 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 	int time = 0;
 	Timer frameDraw;
 	Rocketship rocket = new Rocketship(250,700,50,50);
-	
+	ObjectManager OM = new ObjectManager(rocket);
 	
 	
 	
@@ -29,20 +29,20 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 	
 	
 	void boundaries() {
-		if(rocket.x > LeagueInvaders.WIDTH-50) {
-			rocket.left();
+		if(OM.rock.x > LeagueInvaders.WIDTH-50) {
+			OM.rock.left();
 		}
 		
-		if(rocket.x < 50) {
-			rocket.right();
+		if(OM.rock.x < 50) {
+			OM.rock.right();
 		}
 		
-		if(rocket.y > LeagueInvaders.HEIGHT-50) {
-			rocket.up();
+		if(OM.rock.y > LeagueInvaders.HEIGHT-50) {
+			OM.rock.up();
 		}
 
-		if(rocket.y < 50) {
-			rocket.down();
+		if(OM.rock.y < 50) {
+			OM.rock.down();
 		}
 	}
 	
@@ -64,7 +64,7 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void updateGameState() {
-		
+		OM.update();
 	}
 	
 	void updateEndState() {
@@ -85,7 +85,7 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 	void drawGameState(Graphics g) { 
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-		rocket.draw(g);
+		OM.draw(g);
 		boundaries();
 	}
 	
@@ -129,23 +129,23 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_UP) {
 		    System.out.println("UP");
-		    rocket.up();
+		    OM.rock.up();
 		  
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
 		    System.out.println("DOWN");
-		    rocket.down();
+		    OM.rock.down();
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
 		    System.out.println("LEFT");
-		    rocket.left();
+		    OM.rock.left();
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
 		    System.out.println("RIGHT");
-		    rocket.right();
+		    OM.rock.right();
 		}
 		
 		
