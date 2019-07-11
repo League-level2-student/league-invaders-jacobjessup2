@@ -16,9 +16,6 @@ public class Rocketship extends GameObject{
 	
 	
 	
-	
-	
-	
 	Rocketship(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		speed = 20;
@@ -29,7 +26,9 @@ public class Rocketship extends GameObject{
 		}
 	}
 
-	
+	void update() {
+		super.update();
+	}
 	
 	void loadImage(String imageFile) {
 	    if (needImage) {
@@ -65,7 +64,7 @@ public class Rocketship extends GameObject{
 	
 	
 	public void right() {
-        x+=speed;
+		x+=speed;
     }
 	
 	

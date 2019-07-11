@@ -25,7 +25,7 @@ public class ObjectManager implements ActionListener{
 	
 	
 	void addAlien() {
-		aliens.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));
+		aliens.add(new Alien(random.nextInt(LeagueInvaders.WIDTH-50),0,50,50));
 	}
 	
 	
@@ -37,7 +37,7 @@ public class ObjectManager implements ActionListener{
 			if (aliens.get(i).y > LeagueInvaders.HEIGHT || aliens.get(i).y < 0) {
 					aliens.get(i).isActive = false;	
 			}
-			
+			rock.update();
 		}
 		
 		for (int i = 0; i < projectiles.size(); i++) {
@@ -57,6 +57,9 @@ public class ObjectManager implements ActionListener{
 	
 	void checkCollision() {
 		for (int i = 0; i < aliens.size(); i++) {
+			if(rock.collisionBox.intersects(aliens.get(i).collisionBox)) {
+				rock.isActive = false;
+			}
 			for (int j = 0; j < projectiles.size(); j++) {
 				
 			
@@ -68,11 +71,7 @@ public class ObjectManager implements ActionListener{
 			}
 		}
 	
-		for (int i = 0; i < aliens.size(); i++) {
-			if(rock.collisionBox.intersects(aliens.get(i).collisionBox)) {
-				rock.isActive = false;
-			}
-		}
+		
 	
 	
 	}

@@ -123,6 +123,7 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(currentState == MENU){
@@ -145,35 +146,32 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 		    if (currentState == END) {
 		        currentState = MENU;
 		    } else {
-		    	System.out.println("ENTER");
 		        currentState++;
 		    }
 		    if(currentState == GAME) {
+		    	OM.rock = new Rocketship(250,700,50,50);
+		    	OM.rock.isActive = true;
+		    	OM = new ObjectManager(rocket);
 		    	startGame();
 		    }
 		}   
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_UP) {
-		    System.out.println("UP");
 		    OM.rock.up();
-		  
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
-		    System.out.println("DOWN");
 		    OM.rock.down();
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
-		    System.out.println("LEFT");
 		    OM.rock.left();
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
-		    System.out.println("RIGHT");
 		    OM.rock.right();
+			
 		}
-		
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_SPACE) {
 			OM.addProjectile(OM.rock.getProjectile());
@@ -187,9 +185,7 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
-		
 	}
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 		
