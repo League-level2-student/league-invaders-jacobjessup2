@@ -174,7 +174,13 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_SPACE) {
-			OM.addProjectile(OM.rock.getProjectile());
+			if(currentState == GAME) {
+				OM.addProjectile(OM.rock.getProjectile());
+				}
+			if(currentState == MENU) {
+				JOptionPane.showMessageDialog(null, "Use the arrow keys to move and the space bar to fire. Try to stop as many aliens as you can.");
+			}
+		
 		}
 		
 		
