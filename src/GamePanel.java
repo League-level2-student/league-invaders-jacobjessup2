@@ -86,6 +86,22 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 		if(OM.rock.isActive == false) {
 			currentState = END;
 		}
+		
+		if (OM.rock.up) {
+			OM.rock.up();
+		}
+		
+		if (OM.rock.down) {
+			OM.rock.down();
+		}
+		
+		if (OM.rock.left) {
+			OM.rock.left();
+		}
+		
+		if (OM.rock.right) {
+			OM.rock.right();
+		}
 	}
 	
 	void updateEndState() {
@@ -157,19 +173,19 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 		}   
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_UP) {
-		    OM.rock.up();
+		    OM.rock.up = true;
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
-		    OM.rock.down();
+		    OM.rock.down = true;
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
-		    OM.rock.left();
+		    OM.rock.left = true;
 		}
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
-		    OM.rock.right();
+		    OM.rock.right = true;
 			
 		}
 		
@@ -190,7 +206,22 @@ public class GamePanel  extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+		    OM.rock.up = false;
+		}
 		
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+		    OM.rock.down = false;
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		    OM.rock.left = false;
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		    OM.rock.right = false;
+			
+		}
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
